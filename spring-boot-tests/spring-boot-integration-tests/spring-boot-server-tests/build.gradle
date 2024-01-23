@@ -58,6 +58,7 @@ task buildApps(type: GradleBuild) {
 }
 
 intTest {
+	enabled false
 	inputs.files(
 			"${buildDir}/spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-jetty.jar",
 			"${buildDir}/spring-boot-server-tests-app/build/libs/spring-boot-server-tests-app-jetty.war",

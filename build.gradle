@@ -1,3 +1,37 @@
+
+// [SpringBoot源码编译 - maven + gradle](https://www.cnblogs.com/h--d/p/14775266.html)
+// [springboot-2.3.x最新版源码阅读环境搭建-基于gradle构建](https://blog.csdn.net/smart_an/article/details/107219821)
+// [SpringBoot2.3.2源码Gradle编译详细过程](https://blog.csdn.net/fxzzq/article/details/121804843)
+// [gradle方式配合idea搭建spring6和springboot3源码编译环境](https://blog.csdn.net/qq_34923251/article/details/128664792)
+// 其中，每个连接可能描述了不同的错误处理方式，如
+// 测试问题，可 `gradle build -x test` 或 `gradle build --exclude-task test` 跳过测试进行构建
+// 多模块项目跳过测试参见 https://juejin.cn/post/7121557897959440391 或可能有用 https://blog.csdn.net/litao8912/article/details/130017947
+// 文件格式化问题，可 修改 /buildSrc/build.gradle 注释掉 //id "io.spring.javaformat" version "${javaFormatVersion}"
+// [IDEA Gradle编译输出中文乱码](https://www.jianshu.com/p/5b079e216749) or https://blog.csdn.net/XieEDeHeiShou/article/details/119757510
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//buildscript {
+//	repositories {
+//		// 本地仓库位于USER_HOME/.m2/repository
+//		mavenLocal()
+//		// aliyun镜像 https://help.aliyun.com/document_detail/102512.html	https://developer.aliyun.com/mvn/guide
+//		maven { url 'https://maven.aliyun.com/repository/public' }
+//		maven { url 'https://maven.aliyun.com/repository/central' }
+//		maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//		maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//		maven { url 'https://maven.aliyun.com/repository/google' }
+//		maven { url 'https://maven.aliyun.com/repository/spring' }
+//		maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+//		mavenCentral()
+//		google()
+//	}
+//	dependencies {
+//		// NOTE: Do not place your application dependencies here; they belong
+//		// in the individual module build.gradle files
+//	}
+//
+//}
+
 plugins {
 	id "base"
 	id "org.jetbrains.kotlin.jvm" apply false // https://youtrack.jetbrains.com/issue/KT-30276
@@ -28,6 +62,17 @@ allprojects {
 	group "org.springframework.boot"
 
 	repositories {
+		// 本地仓库位于USER_HOME/.m2/repository
+		mavenLocal()
+		// aliyun镜像 https://help.aliyun.com/document_detail/102512.html	https://developer.aliyun.com/mvn/guide
+		maven { url 'https://maven.aliyun.com/repository/public' }
+		maven { url 'https://maven.aliyun.com/repository/central' }
+		maven { url 'https://maven.aliyun.com/repository/jcenter' }
+		maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+		maven { url 'https://maven.aliyun.com/repository/google' }
+		maven { url 'https://maven.aliyun.com/repository/spring' }
+		maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+
 		mavenCentral()
 		if (version.contains('-')) {
 			maven { url "https://repo.spring.io/milestone" }
